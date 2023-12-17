@@ -1,0 +1,90 @@
+.cart_section {
+  padding: 40px 0;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.content h4 {
+  margin-top: 10px;
+}
+
+.btn_ {
+  background: rgb(94, 0, 0);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 8px;
+}
+
+.content span {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+img.image {
+  width: 150px;
+}
+
+/* .container {
+  position: relative;
+} */
+
+.total {
+  /* position: absolute;
+  bottom: -50px;
+  right: 10px; */
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.sub_cart {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+
+.sub_cart .remove_all i {
+ padding-right: 8px;
+}
+
+/* Add a CSS media query for smaller screen sizes */
+@media (max-width: 780px) {
+  .container {
+    padding: 10px;
+  }
+
+  img.image {
+    width: 95px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  .btn_ {
+    font-size: 1rem;
+  }
+
+  .content span {
+    font-size: 1.2rem;
+  }
+
+  .total {
+    position: static;
+    margin-top: 10px;
+  }
+}

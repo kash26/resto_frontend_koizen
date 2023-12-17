@@ -1,0 +1,11 @@
+@keyframes colorChange {
+    0% {
+      color: red; /* Initial color */
+    }
+    50% {
+      color: blue; /* Intermediate color */
+    }
+    100% {
+      color: green; /* Final color */
+    }
+  }

@@ -1,0 +1,10 @@
+.card .submit-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .submit-buttons button {
+    height: 40px;
+    margin-top: 10px;
+    color: white;
+}

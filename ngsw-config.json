@@ -1,0 +1,8 @@
+{
+    "appData": {
+      "assets": {
+        "include": ["assets", "favicon.ico", "index.html", "manifest.json"]
+      }
+    }
+  }
+  

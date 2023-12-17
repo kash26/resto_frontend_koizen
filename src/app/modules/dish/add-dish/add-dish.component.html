@@ -1,0 +1,147 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Nouveau plat</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active">Plat</li>
+                <li class="breadcrumb-item active">Ajout</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ajout d'un plat</h5>
+
+                            <div *ngIf="isLoading; else elseForm">
+                                <app-loader :title="loadingTitle" />
+                            </div>
+                            <ng-template #elseForm>
+                                <!-- General Form Elements -->
+                                <form [formGroup]="dataForm">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Categorie</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" formControlName="category_id">
+                                                <option>Open this select category</option>
+                                                <ng-container *ngFor="let category of categories">
+                                                    <option [value]="category.id">{{ category?.attributes.name }}
+                                                    </option>
+                                                </ng-container>
+                                            </select>
+                                            <span *ngIf="submitted && f['category_id'].errors" class="text-danger">{{
+                                                errors.category_id }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Origine</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" formControlName="origin_id">
+                                                <option>Open this select origin</option>
+                                                <ng-container *ngFor="let origin of origins">
+                                                    <option [value]="origin.id">{{ origin?.attributes.name }}
+                                                    </option>
+                                                </ng-container>
+                                            </select>
+                                            <span *ngIf="submitted && f['origin_id'].errors" class="text-danger">{{
+                                                errors.origin_id }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label">Nom</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" formControlName="name" name="name">
+                                            <span *ngIf="submitted && f['name'].errors" class="text-danger">{{
+                                                errors.name }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label">Prix($)</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" formControlName="price"
+                                                name="price">
+                                            <span *ngIf="submitted && f['price'].errors" class="text-danger">{{
+                                                errors.price }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label">Temps de
+                                            preparation(min)</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" formControlName="preparation_time"
+                                                name="preparation_time">
+                                            <span *ngIf="submitted && f['preparation_time'].errors"
+                                                class="text-danger">{{ errors.preparation_time }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" formControlName="description"
+                                                name="description" style="height: 100px"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label"
+                                            name="photo">Photo</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="file"
+                                                [ngClass]="{ 'is-invalid': submitted && f['photo'].errors }" required
+                                                (change)="uploadImage($event)" name="photo" formControlName="photo">
+                                            <span *ngIf="submitted && f['photo'].errors" class="text-danger">{{
+                                                errors.photo }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputText" class="col-sm-2 col-form-label">Visible</label>
+                                        <div class="col-sm-10">
+                                            <input type="checkbox" class="form-check-input" id="is_visible"
+                                                formControlName="is_visible" (change)="updateIsVisible($event)">
+                                            <!-- <span *ngIf="errors.name" class="text-danger">{{ errors.name }}</span> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10 submit-buttons">
+                                            <button type="submit" class="btn btn-primary" [disabled]="!dataForm.valid"
+                                                (click)="onAdd()">Créer</button>
+                                            <button class="btn btn-warning" (click)="goBack()">Annuler</button>
+                                        </div>
+                                    </div>
+
+                                </form><!-- End General Form Elements -->
+                            </ng-template>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+            </div><!-- End Right side columns -->
+
+        </div>
+    </section>
+
+</main><!-- End #main -->

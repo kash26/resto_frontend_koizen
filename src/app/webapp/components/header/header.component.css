@@ -1,0 +1,121 @@
+nav a { 
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}  
+
+.bi.bi-cart-plus-fill {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+}
+
+.navbar {
+    display: flex;
+    padding: 15px 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.brand-title {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: white;
+    font-size: 1.3rem;
+    /* margin: .5rem; */
+}
+  
+.toggle-button {
+    position: relative;
+}
+
+.toggle-button .cart-count {
+    position: absolute;
+    top: -2px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+}
+
+
+/* New Style */
+/* header.component.css */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #006400; /* Vert foncé */
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo img {
+    width: 180px; /* Ajuste la taille de l'icône selon tes besoins */
+  }
+  
+  .cart img {
+    width: 30px; /* Ajuste la taille de l'icône du panier selon tes besoins */
+    margin-right: 10px;
+  }
+  
+  .cart-count {
+    background-color: rgb(240, 61, 29); /* Vert foncé */
+    color: #FFFFFF; /* Or */
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+  
+
+/* New Style */
+/* header.component.css */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #765F5B; /* Vert foncé */
+    padding: 10px 20px;
+    color: #FFFFFF; /* Or */
+  }
+  
+  .logo img {
+    width: 50px; /* Ajuste la taille de l'icône selon tes besoins */
+  }
+  
+  .cart i {
+    font-size: 24px; /* Ajuste la taille de l'icône du panier selon tes besoins */
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  .cart-count {
+    color: #FFFFFF; /* Or */
+    border-radius: 50%;
+    padding: 4px 8px; /* Ajuste la taille du cercle selon tes besoins */
+    font-weight: bold;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 14px; /* Ajuste la taille du texte du nombre selon tes besoins */
+    line-height: 1; /* Assure que le texte est centré verticalement */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .cart-count {
+      padding: 3px 6px; /* Ajuste la taille du cercle pour les écrans plus petits */
+      font-size: 12px; /* Ajuste la taille du texte pour les écrans plus petits */
+    }
+  }

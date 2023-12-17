@@ -1,0 +1,67 @@
+<!-- <div class="container-fluid mt-1">
+    
+</div> -->
+<div class="loader-container" *ngIf="isLoading; else elseTableBlock">
+    <app-webloader></app-webloader>
+</div>
+<ng-template #elseTableBlock>
+    <div class="container">
+        <div class="row category-scroll">
+            <div class="category-container">
+                <div class="image-box" (click)="resetFilter()">
+                    <a href="javascript:void(0)" class="category-link py-1" data-category="category1">
+                        <div class="category-icon">
+                            <!-- <i class="bi bi-cutlery"></i> -->
+                            <i class="bi bi-snow2"></i>
+                        </div>
+                        <div class="category-name">
+                            <h4>Tous</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="category-box" *ngFor="let category of categories" (click)="filterByCategory(category.id)">
+                    <!-- <div class="image-box" *ngIf="category.attributes.is_visible == 1"> -->
+                    <div class="image-box">
+                        <a href="javascript:void(0)" class="category-link py-1" data-category="category1">
+                            <div class="category-icon">
+                                <i class="bi bi-snow2"></i>
+                                <!-- <i class="bi bi-cart"></i> -->
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="bi bi-utensils" width="50" height="50">
+                                    <path
+                                        d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm2 0V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1M2 8h20M6 12h12M6 16h12M9 20h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1z" />
+                                </svg> -->
+                            </div>
+                            <div class="category-name">
+                                {{ category.attributes.name }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <section class="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 my-3" *ngFor="let prod of data$.slice().reverse()">
+                    <div class="box">
+                        <div class="product_image">
+                            <img src="{{ getImageUrl(prod?.attributes.photo) }}" alt="">
+                        </div>
+                        <div class="content"
+                            style="display: flex; justify-content: space-between; align-items: center; flex-direction: column;">
+                            <h3>{{ prod?.attributes.name | slice:0:25 }}</h3>
+                            <h4>$ {{prod?.attributes.price}}</h4>
+                            <div>
+                            </div>
+                            <button class="cart_btn" (click)="addToCart(prod)">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

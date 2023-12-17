@@ -1,0 +1,88 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Liste des ingredients</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                <li class="breadcrumb-item active">ingredient</li>
+                <li class="breadcrumb-item active">new</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Liste des ingredients.</h5>
+
+                            <div *ngIf="isLoading; else elseForm">
+                                <app-loader :title="loadingTitle" />
+                            </div>
+                            <ng-template #elseForm>
+                                <!-- General Form Elements -->
+                                <form (ngSubmit)="onAdd()" [formGroup]="dataForm">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Table</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" formControlName="table_id">
+                                                <option selected>Open this select table</option>
+                                                <ng-container *ngFor="let table of tables">
+                                                    <option [value]="table.id">{{ table?.attributes.number }}
+                                                    </option>
+                                                </ng-container>
+                                            </select>
+                                            <!-- <span *ngIf="submitted && f['category_id'].errors" class="text-danger">{{
+                                                errors.category_id }}</span> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Plats</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" formControlName="dishes" multiple
+                                                aria-label="multiple select example">
+                                                <option selected>Open this select origin</option>
+                                                <ng-container *ngFor="let dish of dishes">
+                                                    <option [value]="dish.id">{{ dish?.attributes.name }}
+                                                    </option>
+                                                </ng-container>
+                                            </select>
+                                            <!-- <span *ngIf="submitted && f['origin_id'].errors" class="text-danger">{{
+                                                errors.origin_id }}</span> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10 submit-buttons">
+                                            <button type="submit" class="btn btn-primary">Créer</button>
+                                            <button class="btn btn-warning" (click)="goBack()">Annuler</button>
+                                        </div>
+                                    </div>
+
+                                </form><!-- End General Form Elements -->
+                            </ng-template>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+            </div><!-- End Right side columns -->
+
+        </div>
+    </section>
+
+</main><!-- End #main -->

@@ -1,0 +1,51 @@
+<div class="cart_section">
+    <div class="container">
+        <h2>Cart</h2>
+
+        <div *ngIf="getCartDetails">
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Price</th>
+                    <!-- <th>Quantity</th> -->
+                    <!-- <th>Sub Total</th> -->
+                    <th>Remove item</th>
+                </tr>
+                <tr *ngFor="let prod of getCartDetails">
+                    <td>
+                        <!-- <img src="{{ prod.img }}" class="image" alt=""> -->
+                        <img src="{{ getImageUrl(prod?.attributes.photo) }}" class="image" alt="">
+                    </td>
+                    <td>
+                        <h5>{{ prod?.attributes.name }}</h5>
+                    </td>
+                    <td>$ {{prod?.attributes.price}}</td>
+                    <!-- <td>
+                        <div class="content">
+                            <button class="btn_" (click)="incQnt(prod.productId, prod.qnt)"><i
+                                    class="fas fa-plus"></i></button>
+                            <span class="mt-4">{{ prod.qnt }}</span>
+                            <button class="btn_" (click)="decQnt(prod.productId, prod.qnt)"><i
+                                    class="fas fa-minus"></i></button>
+                        </div>
+                    </td> -->
+                    <!-- <td>$ {{ prod.qnt * prod.amt | number }}</td> -->
+                    <td><a href="javascript:void(0)" (click)="delete(prod?.id)" class="btn btn-danger"
+                            style="border-radius: 50%;"><i class="bi bi-trash3"></i></a>
+                    </td>
+                </tr>
+            </table>
+            <div class="sub_cart" style="display: flex;">
+                <div class="total">
+                    $ {{ total }}
+                </div>
+                <div class="remove_all">
+                    <button class="btn btn-danger mx-3" (click)="removeAll()"> <i class="bi bi-trash3"></i>Remove
+                        all</button>
+                    <button class="btn btn-primary" (click)="checkout()"> <i class="bi bi-cart"></i>Check out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

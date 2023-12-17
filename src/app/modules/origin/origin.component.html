@@ -1,0 +1,60 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Pays d'origines des plats</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+                <li class="breadcrumb-item active">Pays d'origines des plats</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div *ngIf="isLoading; else elseTableBlock">
+                <app-loader />
+            </div>
+            <ng-template #elseTableBlock>
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body pb-0">
+                            <div class="header-table">
+                                <h5 class="card-title">Pays d'origines des plats</h5>
+                                <button type="button" class="btn btn-info btn-sm" (click)="addOrigin()">Ajouter</button>
+                            </div>
+
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <!-- <th scope="col">#</th> -->
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of datas$ | reverse; let i = index">
+                                        <!-- <th scope="row">{{ i + 1 }}</th> -->
+                                        <td>{{ item.attributes.name }}</td>
+                                        <td class="">
+                                            <a type="button" class="btn btn-success"
+                                                routerLink="/admin/update-origin/{{ item.id }}"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                            <button type="button" class="btn btn-danger m-2"
+                                                (click)="delete($event, item.id)"><i
+                                                    class="bi bi-trash3-fill"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
+
+                </div>
+            </ng-template>
+        </div>
+    </section>
+</main><!-- End #main -->

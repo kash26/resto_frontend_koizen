@@ -1,0 +1,63 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+                <li class="breadcrumb-item active">Table</li>
+                <!-- <li class="breadcrumb-item active">Liste</li> -->
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="header-table">
+                            <h5 class="card-title">Liste des tables</h5>
+                            <button type="button" class="btn btn-info btn-sm" (click)="addItem()">Ajouter</button>
+                        </div>
+
+                        <div *ngIf="isLoading; else elseTableBlock">
+                            <app-loader />
+                        </div>
+                        <ng-template #elseTableBlock>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <!-- <th scope="col">#</th> -->
+                                        <th scope="col">Numero</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of datas$ | reverse; let i = index">
+                                        <!-- <th scope="row">{{ i + 1 }}</th> -->
+                                        <td>{{ item.attributes.number }}</td>
+                                        <td class="">
+                                            <a type="button" class="btn btn-success"
+                                                routerLink="/admin/update-table/{{ item.id }}"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                            <button type="button" class="btn btn-danger m-2"
+                                                (click)="delete($event, item.id)"><i
+                                                    class="bi bi-trash3-fill"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </ng-template>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->

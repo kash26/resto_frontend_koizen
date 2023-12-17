@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+    font-family: "Open Sans", sans-serif !important;
+    /* background: #f6f9ff !important; */
+    /* background: #eaf5ea !important; */
+    background: #DFD8D6 !important;
+    color: #371713 !important;
+}
+
+header {
+    /* background-color: #dd7230 !important; */
+    background-color: #371713 !important;
+}
+
+.category-icon {
+    border: 2px solid #371713 !important;
+    color: #371713 !important;
+}
+
+.bi.bi-snow2 {
+    color: #371713 !important;
+}
+
+.cart_btn {
+    background-color: #371713 !important;
+    border: 1px solid #371713 !important;
+}
+
+.remove_all .order {
+    background-color: #371713 !important;
+    border: 1px solid #371713 !important;
+}
+
+.card .header-table {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .header-table button {
+    height: 40px;
+    margin-top: 10px;
+    color: white;
+}
+
+.card .submit-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .submit-buttons button {
+    height: 40px;
+    margin-top: 10px;
+    color: white;
+}
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}

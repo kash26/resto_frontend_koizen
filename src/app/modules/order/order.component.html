@@ -1,0 +1,75 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Commandes</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Acceuil</a></li>
+                <li class="breadcrumb-item active">Commandes</li>
+                <!-- <li class="breadcrumb-item active">Liste</li> -->
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="header-table">
+                            <h5 class="card-title">Liste des commandes</h5>
+                            <!-- <button type="button" class="btn btn-info btn-sm" (click)="addItem()">Ajouter</button> -->
+                        </div>
+
+                        <div *ngIf="isLoading; else elseTableBlock">
+                            <app-loader />
+                        </div>
+                        <ng-template #elseTableBlock>
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <!-- <th scope="col">#</th> -->
+                                        <th scope="col">Table</th>
+                                        <th scope="col">Plats</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of datas$ | reverse; let i = index">
+                                        <!-- <th scope="row">{{ item.id }}</th> -->
+                                        <td>{{ item?.relationships.table }}</td>
+                                        <td>
+                                            <span *ngFor="let item2 of item?.relationships.dishes.data">{{ item2.name
+                                                }} - {{ item2.price }}<br /></span>
+                                        </td>
+                                        <td>
+                                            {{ calculateTotalPrice(item?.relationships.dishes.data) }} $
+                                        </td>
+                                        <!-- <td>
+                                            <a routerLink="/admin/update-table/{{ item.id }}"
+                                                class="btn btn-primary">Edit</a>
+                                            <button type="button" (click)="deleteItem($event, item.id)"
+                                                class="btn btn-warning">Delete</button>
+                                        </td> -->
+                                        <td class="">
+                                            <!-- <a type="button" class="btn btn-success"
+                                                routerLink="/admin/update-ingredient/{{ item.id }}"><i
+                                                    class="bi bi-pencil-square"></i></a> -->
+                                            <button type="button" class="btn btn-danger m-2"
+                                                (click)="delete($event, item.id)"><i
+                                                    class="bi bi-trash3-fill"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ng-template>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>

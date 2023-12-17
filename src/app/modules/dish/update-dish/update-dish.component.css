@@ -1,0 +1,8 @@
+.submit-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    max-width: 120px !important;
+}

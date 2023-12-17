@@ -1,0 +1,11 @@
+
+.card .header-table {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .header-table button {
+    height: 40px;
+    margin-top: 10px;
+    color: white;
+}
